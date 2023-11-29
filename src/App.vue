@@ -2,6 +2,7 @@
 import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import { store } from "./store.js";
+import CharactersList from "./components/CharactersList.vue";
 
 export default {
   data() {
@@ -10,8 +11,9 @@ export default {
     };
   },
   components: {
-    AppHeader
-  },
+    AppHeader,
+    CharactersList
+},
   methods: {
     handleClick() {
       axios
@@ -44,6 +46,7 @@ export default {
 
 <template>
   <AppHeader @btn-click="handleClick" />
+  <CharactersList />
 </template>
 
 <style lang="scss">

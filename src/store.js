@@ -6,7 +6,7 @@ export const store = reactive({
     searchText: "",
     apiUrl: 'https://api.themoviedb.org/3/search',
     apiKey: 'e081cee5d1c0f1d058879e9c4b034a02',
-    queryFilm: '/movie',
+    images: 'https://image.tmdb.org/t/p/w342',
     querySeries: '/tv',
-    baseImagePath: 'https://image.tmdb.org/t/p/w342'
+    queryFilm: '/movie',
 });

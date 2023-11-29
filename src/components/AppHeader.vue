@@ -27,25 +27,30 @@ header {
     background-color: black;
     padding-top: 3rem;
     padding-bottom: 1.5rem;
-    .container {
-    margin: 0 auto;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    h1 {
-        color: red;
-    }
-    .search {
-        input {
-            margin-right: .5rem;
+    .container {
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            color: red;
+        }
+
+        .search {
+            input {
+                margin-right: .5rem;
+                height: 30px;
+            }
+
+            button {
+                height: 30px;
+            }
         }
     }
 }
-}
-
-
 </style>
 
 
