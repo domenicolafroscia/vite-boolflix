@@ -50,23 +50,70 @@ export default {
 
 <template>
     <div class="card">
-        <img :src="`${images}${card.poster_path}`" alt="">
-        <h3>{{ getTitle() }}</h3>
-        <p>{{ getOriginalTitle() }}</p>
-        <img v-if="hasFlag" class="flag" :src="getImagePath(card.original_language)" alt="">
-        <p v-else>{{ card.original_language }}</p>
-        <p>{{ card.overview }}</p>
-        <p><i v-for="vote in getVoteFrom1To5(card.vote_average)" class="fa-solid fa-star" style="color: #ffbd00;"></i><i v-for="vote in emptyStar(getVoteFrom1To5(card.vote_average))" class="fa-regular fa-star" style="color: #ffbd00;"></i></p>
-        
+        <img class="poster" v-if="card.poster_path" :src="`${images}${card.poster_path}`" alt="">
+        <img class="image-not-available" v-else
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+            alt="">
+        <div class="description">
+            <h3><strong>Title:</strong> {{ getTitle() }}</h3>
+            <p><strong>Original Title:</strong> {{ getOriginalTitle() }}</p>
+            <p class="lang" v-if="hasFlag"><strong>Language:</strong><img class="flag"
+                    :src="getImagePath(card.original_language)" alt=""></p>
+            <p v-else><strong>Language:</strong> {{ card.original_language }}</p>
+            <p><strong>Overview:</strong> {{ card.overview }}</p>
+            <p><strong>Vote:</strong> <i v-for="vote in getVoteFrom1To5(card.vote_average)" class="fa-solid fa-star"
+                    style="color: #ffbd00;"></i><i v-for="vote in emptyStar(getVoteFrom1To5(card.vote_average))"
+                    class="fa-regular fa-star" style="color: #ffbd00;"></i></p>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .card {
     margin-bottom: 4rem;
+    border: 2px solid white;
+    position: relative;
+
+    .description {
+        position: absolute;
+        top: 60px;
+        left: 20px;
+        display: none;
+    }
+
+    h3,
+    p {
+        color: white;
+        padding-top: .5rem;
+    }
+
+    .poster,
+    .image-not-available {
+        display: block;
+        height: 513px;
+    }
+
+    .image-not-available {
+        width: 342px;
+    }
+
+    .lang {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
 
     .flag {
         width: 40px;
     }
-}
-</style>
+
+    &:hover {
+        .description {
+            display: block;
+        }
+        .poster, .image-not-available {
+            filter: brightness(10%);
+        }
+    }
+
+}</style>

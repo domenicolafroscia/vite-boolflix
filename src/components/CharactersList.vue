@@ -40,7 +40,24 @@ export default {
 </template>
 
 <style scoped lang="scss">
-h2 {
-    margin: 5rem;
+.container {
+    background-color: #434343;
+
+    h2 {
+        padding: 5rem;
+        text-align: center;
+        color: red;
+        font-size: 3rem;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+    }
+
 }
 </style>
