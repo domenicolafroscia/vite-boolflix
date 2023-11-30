@@ -16,7 +16,7 @@ export default {
             <h1>BOOLFLIX</h1>
             <div class="search">
                 <input type="search" v-model.trim="store.searchText">
-                <button @click="$emit('btn-click')">Search</button>
+                <button @click="$emit('click-search')">Search</button>
             </div>
         </div>
     </header>

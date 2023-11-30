@@ -45,7 +45,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @btn-click="handleClick" />
+  <AppHeader @click-search="handleClick" />
   <CharactersList />
 </template>
 
