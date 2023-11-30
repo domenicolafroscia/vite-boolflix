@@ -2,7 +2,7 @@
 export default {
     data() {
         return {
-            lang: ['it', 'en', 'fr', 'es', 'de', 'ja']
+            lang: ['it', 'en', 'fr', 'es', 'de', 'ja'],
         };
     },
     props: {
@@ -31,8 +31,13 @@ export default {
         getImagePath(img) {
             return new URL(`../assets/img/${img}.jpg`, import.meta.url).href;
         },
-        getVoteFrom1To5() {
-            return Math.round(this.card.vote_average / 2)
+        getVoteFrom1To5(vote) {
+            const voteMaxFive = Math.round(this.card.vote_average / 2)
+            return voteMaxFive
+        },
+        emptyStar(vote) {
+            const emptyStars = 5 - vote;
+            return emptyStars
         },
     },
     computed: {
@@ -50,7 +55,9 @@ export default {
         <p>{{ getOriginalTitle() }}</p>
         <img v-if="hasFlag" class="flag" :src="getImagePath(card.original_language)" alt="">
         <p v-else>{{ card.original_language }}</p>
-        <p>{{ getVoteFrom1To5() }}</p>
+        <p>{{ card.overview }}</p>
+        <p><i v-for="vote in getVoteFrom1To5(card.vote_average)" class="fa-solid fa-star" style="color: #ffbd00;"></i><i v-for="vote in emptyStar(getVoteFrom1To5(card.vote_average))" class="fa-regular fa-star" style="color: #ffbd00;"></i></p>
+        
     </div>
 </template>
 
